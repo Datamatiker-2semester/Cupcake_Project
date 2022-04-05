@@ -49,7 +49,7 @@ public class UserMapper implements IUserMapper
     }
 
     @Override
-    public User createUser(String username, String password, String role) throws DatabaseException
+    public User createUser(String username, String password,String email, String role, int balance) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
         User user;
