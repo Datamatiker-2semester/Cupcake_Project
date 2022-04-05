@@ -16,37 +16,33 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
-<img src="${pageContext.request.contextPath}/images/cupcakeimage.png" width="4000px;" class="img-fluid"/>
-<br>
-<br>
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="index.jsp">
 
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.jsp">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Ordrer</a>
-                    <c:if test="${sessionScope.Authentication.admin == true }">
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Kunder</a>
-                    </c:if>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Orders</a>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Costumers</a>
                     <c:if test="${sessionScope.user == null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
                     </c:if>
+
                 </div>
             </div>
         </div>
     </nav>
+    <img src="${pageContext.request.contextPath}/images/cupcakeimage.png" width="4000px;" class="img-fluid"/>
 </header>
 
 <div id="body" class="container mt-4" style="min-height: 400px;">
