@@ -4,7 +4,7 @@ public class Bottom {
     private int bottomPrice;
     private String bottomName;
 
-    public Bottom(int price, String bottomName) {
+    public Bottom(int bottom_id, String bottomName, int price) {
         this.bottomPrice = price;
         this.bottomName = bottomName;
     }
