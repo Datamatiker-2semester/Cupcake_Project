@@ -44,14 +44,16 @@ public class CreateUserServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
+        String role = request.getParameter("role");
 
         try {
-            user = userMapper.createUser(username,password,email);
+            user = userMapper.createUser(username,password,email,role);
             session = request.getSession();
             session.setAttribute("username",username);
             session.setAttribute("password",password);
             session.setAttribute("email",email);
             session.setAttribute("user",user);
+            session.setAttribute("role",role);
 
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
