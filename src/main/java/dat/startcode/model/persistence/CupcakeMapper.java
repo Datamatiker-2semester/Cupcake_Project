@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,7 +27,7 @@ public class CupcakeMapper {
 
         User user = null;
 
-        String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+        String sql = "SELECT * FROM bottom";
 
         try (Connection connection = connectionPool.getConnection())
         {
@@ -52,25 +53,26 @@ public class CupcakeMapper {
     }
 
 
-    public User createUser(String username, String password, String role) throws DatabaseException
+    public User createBottom(int bottom_id, String bottom_name, int bottom_price) throws DatabaseException
     {
+        ArrayList<Bottom> bottomlist = new ArrayList<Bottom>();
         Logger.getLogger("web").log(Level.INFO, "");
-        User user;
-        String sql = "insert into user (username, password, role) values (?,?,?)";
+        Cupcake cupcake;
+        String sql = "SELECT * FROM bottom";
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
-                ps.setString(1, username);
-                ps.setString(2, password);
-                ps.setString(3, role);
+                ps.setInt(1, bottom_id);
+                ps.setString(2, bottom_name);
+                ps.setInt(3, bottom_price);
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1)
                 {
-                    user = new User(username, password, role);
+                    cupcake = new User(bottom_id, bottom_name, bottom_price);
                 } else
                 {
-                    throw new DatabaseException("The user with username = " + username + " could not be inserted into the database");
+                    throw new DatabaseException("The cupcake could not be inserted into the database");
                 }
             }
         }
