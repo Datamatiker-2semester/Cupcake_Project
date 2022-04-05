@@ -17,6 +17,8 @@ import java.util.logging.Logger;
 public class CreateUserServlet extends HttpServlet {
 
     private ConnectionPool connectionPool;
+    private UserMapper userMapper;
+
 
     @Override
     public void init() throws ServletException
@@ -27,27 +29,30 @@ public class CreateUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-
+        doPost(request, response);
+        response.sendRedirect("index.jsp");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         session.setAttribute("user", null); // adding empty user object to session scope
-        User user = null;
         UserMapper userMapper = new UserMapper(connectionPool);
+        User user = null;
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-        String role = "customer";
-        int balance = 500;
 
-        try
-        {
+        try {
+            user = userMapper.createUser(username,password,email);
             session = request.getSession();
-            session.setAttribute("user",userMapper.createUser(username, password, email, role, balance));
+            session.setAttribute("username",username);
+            session.setAttribute("password",password);
+            session.setAttribute("email",email);
+            session.setAttribute("user",user);
+
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
         catch (DatabaseException e)
