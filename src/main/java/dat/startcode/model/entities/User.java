@@ -4,19 +4,27 @@ import java.util.Objects;
 
 public class User
 {
+    private int user_id;
     private String username;
     private String password;
     private String role;
+    private String email;
+    private int balance;
 
 
-    public User(String username, String password, String role)
-    {
+    public User(String username, String password, String role, String email, int balance) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.email = email;
+        this.balance = balance;
+    }
+
+    public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
         this.role = role;
     }
-
-
 
     @Override
     public String toString()
@@ -56,6 +64,30 @@ public class User
     public void setRole(String role)
     {
         this.role = role;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
 
     @Override
