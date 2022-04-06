@@ -2,6 +2,7 @@ package dat.startcode.control;
 
 import dat.startcode.model.entities.Bottom;
 import dat.startcode.model.entities.Cupcake;
+import dat.startcode.model.entities.Topping;
 import dat.startcode.model.exceptions.DatabaseException;
 import dat.startcode.model.persistence.ConnectionPool;
 import dat.startcode.model.persistence.CupcakeMapper;
@@ -28,9 +29,12 @@ public class OrderServlet extends HttpServlet {
 
         response.setContentType("text/html");
         HttpSession session = request.getSession();
+        HttpSession session1 = request.getSession();
         try {
-            ArrayList<Bottom> listCupcake = cupcakeMapper.getBottom();
-            session.setAttribute("listCupcake", listCupcake);
+            ArrayList<Bottom> listCupcakeBottom = cupcakeMapper.getBottom();
+            session.setAttribute("listCupcakeB", listCupcakeBottom);
+            ArrayList<Topping> listCupcakeTopping = cupcakeMapper.getToppings();
+            session1.setAttribute("listCupcakeT",listCupcakeTopping);
             request.getRequestDispatcher("OrderCupcake.jsp").forward(request, response);
         } catch (DatabaseException e) {
             e.printStackTrace();

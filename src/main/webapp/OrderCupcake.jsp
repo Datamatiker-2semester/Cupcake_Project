@@ -16,21 +16,19 @@
 <form>
     <label> Choose topping </label>
     <select>
-        <option value="Choose">
-        </option>
-        <option value="Glaze"> Glaze
-        </option>
-        <option value="Sprinkle"> Sprinkle
-        </option>
+        <c:forEach items="${sessionScope.listCupcakeT}" var="=topping">
+
+            <option value="listT"> ${topping.toppingName}</option>
+        </c:forEach>
     </select>
 </form>
 
 <form>
     <label> Choose flavor </label>
     <select>
-        <c:forEach items="${sessionScope.listCupcake}" var="bottom">
+        <c:forEach items="${sessionScope.listCupcakeB}" var="bottom">
 
-            <option value="list">  ${bottom.bottomName}</option>
+            <option value="listB">  ${bottom.bottomName}</option>
         </c:forEach>
 
     </select>
