@@ -30,7 +30,7 @@
     <select>
         <c:forEach items="${sessionScope.listCupcake}" var="bottom">
 
-            <option value="list">  href="#"${bottom.bottomName}></option>
+            <option value="list">  ${bottom.bottomName}</option>
         </c:forEach>
 
     </select>
