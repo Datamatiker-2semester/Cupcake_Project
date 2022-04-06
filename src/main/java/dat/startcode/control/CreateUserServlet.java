@@ -3,23 +3,22 @@ package dat.startcode.control;
 import dat.startcode.model.config.ApplicationStart;
 import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
-import dat.startcode.model.persistence.UserMapper;
 import dat.startcode.model.persistence.ConnectionPool;
+import dat.startcode.model.persistence.UserMapper;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@WebServlet(name = "login", urlPatterns = {"/login"} )
-public class LoginServlet extends HttpServlet
-{
+@WebServlet(name = "CreateUserServlet", value = "/CreateUserServlet")
+public class CreateUserServlet extends HttpServlet {
+
     private ConnectionPool connectionPool;
+    private UserMapper userMapper;
+
 
     @Override
     public void init() throws ServletException
@@ -27,15 +26,16 @@ public class LoginServlet extends HttpServlet
         this.connectionPool = ApplicationStart.getConnectionPool();
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-    {
-        // You shouldn't end up here with a GET-request, thus you get sent back to frontpage
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         doPost(request, response);
         response.sendRedirect("index.jsp");
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-    {
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         session.setAttribute("user", null); // adding empty user object to session scope
@@ -43,13 +43,18 @@ public class LoginServlet extends HttpServlet
         User user = null;
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String email = request.getParameter("email");
+        String role = request.getParameter("role");
 
-
-        try
-        {
-            user = userMapper.login(username, password);
+        try {
+            user = userMapper.createUser(username,password,email,role);
             session = request.getSession();
-            session.setAttribute("user", user); // adding user object to session scope
+            session.setAttribute("username",username);
+            session.setAttribute("password",password);
+            session.setAttribute("email",email);
+            session.setAttribute("user",user);
+            session.setAttribute("role",role);
+
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
         catch (DatabaseException e)
@@ -58,10 +63,5 @@ public class LoginServlet extends HttpServlet
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
-    }
-
-    public void destroy()
-    {
-
     }
 }

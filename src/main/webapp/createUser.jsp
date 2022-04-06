@@ -6,18 +6,18 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-             Login:
+             Create user:
     </jsp:attribute>
 
     <jsp:attribute name="footer">
-            Login
+            Create user:
     </jsp:attribute>
 
     <jsp:body>
 
-        <h3>You can log in here</h3>
+        <h3>You can create a user here:</h3>
 
-        <form action="login" method="post">
+        <form action="CreateUserServlet" method="post">
             <label for="username">Username: </label>
             <input type="text" id="username" name="username"/>
             <br>
@@ -26,14 +26,13 @@
             <input type="password" id="password" name="password"/>
             <br>
             <br>
-            <input type="submit"  value="Log in"/>
-        </form>
+            <label for="email">Email: </label>
+            <input type="email" id="email" name="email"/>
             <br>
-        <h4>You can create a new user here</h4>
-        <form action="createUser.jsp">
-
-            <input type="submit" value="Create user">
+            <br>
+            <input type="submit"  value="Create user"/>
         </form>
+        <br>
 
     </jsp:body>
 </t:pagetemplate>
