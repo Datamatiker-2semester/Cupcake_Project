@@ -27,5 +27,9 @@ public class Main {
         for (Topping topping : toppingList) {
             System.out.println(topping);
         }
+        List<Bottom> bottomList = cupcakeMapper.getBottom();
+        for (Bottom bottom: bottomList) {
+            System.out.println(bottom);
+        }
     }
 }
