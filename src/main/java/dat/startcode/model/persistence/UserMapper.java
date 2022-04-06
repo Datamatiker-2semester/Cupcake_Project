@@ -63,10 +63,12 @@ public class UserMapper implements IUserMapper
                 ps.setString(3, email);
 
 
+
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1)
                 {
                     user = new User(username, password, email);
+                    user.setRole("customer");
                 } else
                 {
                     throw new DatabaseException("The user with username = " + username + " could not be inserted into the database");
