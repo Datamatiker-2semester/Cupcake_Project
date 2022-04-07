@@ -29,7 +29,6 @@ public class OrderServlet extends HttpServlet {
 
         response.setContentType("text/html");
         HttpSession session = request.getSession();
-        HttpSession session1 = request.getSession();
         try {
             ArrayList<Bottom> listCupcakeBottom = cupcakeMapper.getBottom();
             session.setAttribute("listCupcakeB", listCupcakeBottom);

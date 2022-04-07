@@ -4,17 +4,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@page errorPage="error.jsp" isErrorPage="false" %>
 
-<html>
-<head>
-    <title>Order your cupcakes here!</title>
-    <h1>Welcome!</h1>
-    <h2>Here you can order your cupcakes</h2>
+<t:pagetemplate>
+  <jsp:attribute name="header">
 
+    </jsp:attribute>
 
-</head>
-<body>
+    <jsp:attribute name="footer">
 
-    <div>Welcome ${user.username}, what would you like?</div>
+    </jsp:attribute>
+<jsp:body>
+
+    <div>Welcome ${user.username}! What would you like?</div>
     <br>
 <form>
     <label> Choose topping </label>
@@ -44,13 +44,14 @@
 
     </select>
 </form>
-
-<h3>Submit order</h3>
+    <br>
+<h6>Submit order</h6>
     <button class="GFG"
             onclick="window.location.href = 'purchase.jsp'">
         Click Here
     </button>
 </form>
 
-</body>
-</html>
+
+</jsp:body>
+</t:pagetemplate>
