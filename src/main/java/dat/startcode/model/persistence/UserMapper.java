@@ -4,12 +4,14 @@ import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UserMapper implements IUserMapper
 {
     ConnectionPool connectionPool;
+    User user;
 
     public UserMapper(ConnectionPool connectionPool)
     {
@@ -35,7 +37,8 @@ public class UserMapper implements IUserMapper
                 if (rs.next())
                 {
                     String role = rs.getString("role");
-                    user = new User(username, password, role);
+                    String email = rs.getString("email");
+                    user = new User(username, password,email,role);
                 } else
                 {
                     throw new DatabaseException("Wrong username or password");
@@ -49,22 +52,32 @@ public class UserMapper implements IUserMapper
     }
 
     @Override
-    public User createUser(String username, String password,String email, String role, int balance) throws DatabaseException
+    public User createUser(String username, String password,String email, String role) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
         User user;
-        String sql = "insert into user (username, password, role) values (?,?,?)";
+        String sql = "insert into user (username,password,email,role) values (?,?,?,?)";
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
                 ps.setString(1, username);
                 ps.setString(2, password);
-                ps.setString(3, role);
+                ps.setString(3, email);
+                ps.setString(4,role);
+
+
+
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1)
                 {
-                    user = new User(username, password, role);
+
+                    user = new User(username, password, email,role);
+
+
+
+
+
                 } else
                 {
                     throw new DatabaseException("The user with username = " + username + " could not be inserted into the database");

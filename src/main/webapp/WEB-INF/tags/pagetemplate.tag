@@ -18,8 +18,10 @@
 </head>
 <body>
 <header>
+    <img src="${pageContext.request.contextPath}/images/cupcakeheader.png" width="1900px;" class="img-fluid"/>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
+
+        <div class="container-fluid">
             <a class="navbar-brand" href="index.jsp">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -28,20 +30,28 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
+
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Orders</a>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/customers.jsp">Costumers</a>
                     <c:if test="${sessionScope.user == null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Ordrer</a>
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Kunder</a>
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/admin.jsp">admin</a>
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
+
                     </c:if>
+                    <c:if test="${sessionScope.user != null}">
+                        <a class="nav-item nav-link">${sessionScope.user.email}</a>
+                    </c:if>
+
+
+
+
                 </div>
             </div>
         </div>
     </nav>
-    <img src="${pageContext.request.contextPath}/images/cupcakeheader.png" width="1900px;" class="img-fluid"/>
+
 </header>
 
 <div id="body" class="container mt-4" style="min-height: 400px;">
@@ -50,6 +60,8 @@
 </div>
 
 <!-- Footer -->
+
+
 <div class="container mt-3">
     <hr/>
     <div class="row mt-4">

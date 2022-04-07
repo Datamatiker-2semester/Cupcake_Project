@@ -1,9 +1,12 @@
 package dat.startcode.model.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class User
 {
+    private List<User>userlist=new ArrayList<>();
     private int user_id;
     private String username;
     private String password;
@@ -25,14 +28,22 @@ public class User
         this.password = password;
         this.role = role;
     }
+    public User(String username, String password, String email,String role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.email = email;
+    }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "User{" +
-                "brugerNavn='" + username + '\'' +
-                ", kodeord='" + password + '\'' +
-                ", rolle='" + role + '\'' +
+                "user_id=" + user_id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", email='" + email + '\'' +
+                ", balance=" + balance +
                 '}';
     }
 
@@ -89,6 +100,7 @@ public class User
     public void setBalance(int balance) {
         this.balance = balance;
     }
+
 
     @Override
     public boolean equals(Object o)
