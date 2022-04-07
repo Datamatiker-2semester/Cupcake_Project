@@ -36,6 +36,7 @@ public class OrderServlet extends HttpServlet {
             ArrayList<Topping> listCupcakeTopping = cupcakeMapper.getToppings();
             session.setAttribute("listCupcakeT",listCupcakeTopping);
             request.getRequestDispatcher("OrderCupcake.jsp").forward(request, response);
+            request.getAttribute("index.jsp");
         } catch (DatabaseException e) {
             e.printStackTrace();
         }

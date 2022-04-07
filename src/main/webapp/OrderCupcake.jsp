@@ -13,7 +13,9 @@
 
 </head>
 <body>
-<div class="d1">
+
+    <div>Welcome ${user.username}, what would you like?</div>
+    <br>
 <form>
     <label> Choose topping </label>
     <select>
@@ -27,7 +29,7 @@
         </c:forEach>
     </select>
 </form>
-</div>
+
 <form>
     <label> Choose flavor </label>
     <select>
@@ -36,7 +38,7 @@
             <option value="listB">
                 <column>${bottom.bottomName}</column>
                 <column>${bottom.bottomPrice}</column>
-                <coumn> kr</coumn>
+                <column> kr</column>
             </option>
         </c:forEach>
 
@@ -44,8 +46,10 @@
 </form>
 
 <h3>Submit order</h3>
-<form action="Order" method="post">
-<button type="button">Order now</button>
+    <button class="GFG"
+            onclick="window.location.href = 'purchase.jsp'">
+        Click Here
+    </button>
 </form>
 
 </body>
