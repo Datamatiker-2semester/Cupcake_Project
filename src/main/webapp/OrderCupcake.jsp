@@ -13,22 +13,31 @@
 
 </head>
 <body>
+<div class="d1">
 <form>
     <label> Choose topping </label>
     <select>
         <c:forEach items="${sessionScope.listCupcakeT}" var="topping">
 
-            <option value="listT"> ${topping.toppingName}</option>
+            <option value="listT">
+                    <column>${topping.toppingName}</column>
+                    <column>${topping.toppingPrice}</column>
+                    <column>kr</column>
+            </option>
         </c:forEach>
     </select>
 </form>
-
+</div>
 <form>
     <label> Choose flavor </label>
     <select>
         <c:forEach items="${sessionScope.listCupcakeB}" var="bottom">
 
-            <option value="listB">  ${bottom.bottomName}</option>
+            <option value="listB">
+                <column>${bottom.bottomName}</column>
+                <column>${bottom.bottomPrice}</column>
+                <coumn> kr</coumn>
+            </option>
         </c:forEach>
 
     </select>
