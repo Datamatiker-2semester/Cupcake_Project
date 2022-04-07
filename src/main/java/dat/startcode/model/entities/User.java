@@ -13,7 +13,6 @@ public class User
     private String password;
     private String role;
     private String email;
-    private int balance;
 
 
     public User(String username, String password, String role, String email, int balance) {
