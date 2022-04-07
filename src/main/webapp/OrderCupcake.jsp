@@ -16,7 +16,7 @@
 <form>
     <label> Choose topping </label>
     <select>
-        <c:forEach items="${sessionScope.listCupcakeT}" var="=topping">
+        <c:forEach items="${sessionScope.listCupcakeT}" var="topping">
 
             <option value="listT"> ${topping.toppingName}</option>
         </c:forEach>

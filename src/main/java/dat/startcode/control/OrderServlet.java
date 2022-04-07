@@ -34,7 +34,7 @@ public class OrderServlet extends HttpServlet {
             ArrayList<Bottom> listCupcakeBottom = cupcakeMapper.getBottom();
             session.setAttribute("listCupcakeB", listCupcakeBottom);
             ArrayList<Topping> listCupcakeTopping = cupcakeMapper.getToppings();
-            session1.setAttribute("listCupcakeT",listCupcakeTopping);
+            session.setAttribute("listCupcakeT",listCupcakeTopping);
             request.getRequestDispatcher("OrderCupcake.jsp").forward(request, response);
         } catch (DatabaseException e) {
             e.printStackTrace();
@@ -44,7 +44,7 @@ public class OrderServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    doGet(request,response);
 
     }
 }
