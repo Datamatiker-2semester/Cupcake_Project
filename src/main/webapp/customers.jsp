@@ -21,13 +21,18 @@
         <th>Købshistorik:</th>
         <th>Rediger Profil:</th>
       </tr>
+
       <tr>
-        <c:forEach items="${applicationScope.user}" var="item">
-        <td>${item.user.username}</td>
+
+        <td>${sessionScope.user.username}</td>
         <td>test</td>
         <td>test</td>
-        </c:forEach>
+
+
+
       </tr>
+
+
 
       <tr>
         <td>Centro comercial Moctezuma</td>

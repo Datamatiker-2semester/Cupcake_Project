@@ -1,3 +1,4 @@
+/*
 package dat.startcode.persistence;
 
 import dat.startcode.model.entities.User;
@@ -88,3 +89,5 @@ class UserMapperTest
 
     }
 }
+
+ */

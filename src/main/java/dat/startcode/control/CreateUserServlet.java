@@ -57,6 +57,7 @@ public class CreateUserServlet extends HttpServlet {
             session.setAttribute("user",user);
             session.setAttribute("role",role);
 
+
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
         catch (DatabaseException e)
