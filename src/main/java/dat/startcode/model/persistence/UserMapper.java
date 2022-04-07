@@ -4,12 +4,14 @@ import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UserMapper implements IUserMapper
 {
     ConnectionPool connectionPool;
+    User user;
 
     public UserMapper(ConnectionPool connectionPool)
     {
@@ -67,8 +69,10 @@ public class UserMapper implements IUserMapper
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1)
                 {
+
                     user = new User(username, password, email);
                     user.setRole("customer");
+
                 } else
                 {
                     throw new DatabaseException("The user with username = " + username + " could not be inserted into the database");

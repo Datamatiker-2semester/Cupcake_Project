@@ -18,6 +18,7 @@
 </head>
 <body>
 <header>
+    <img src="${pageContext.request.contextPath}/images/cupcakeheader.png" width="1900px;" class="img-fluid"/>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
         <div class="container-fluid">
@@ -29,20 +30,24 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
+
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Orders</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Costumers</a>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/customers.jsp">Costumers</a>
                     <c:if test="${sessionScope.user == null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
+
                     </c:if>
+
+
 
                 </div>
             </div>
         </div>
     </nav>
-    <img src="${pageContext.request.contextPath}/images/cupcakeimage.png" width="4000px;" class="img-fluid"/>
+
 </header>
 
 <div id="body" class="container mt-4" style="min-height: 400px;">
@@ -51,22 +56,7 @@
 </div>
 
 <!-- Footer -->
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
 <div class="container mt-3">
     <hr/>

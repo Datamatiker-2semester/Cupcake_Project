@@ -10,6 +10,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,6 +19,7 @@ public class CreateUserServlet extends HttpServlet {
 
     private ConnectionPool connectionPool;
     private UserMapper userMapper;
+    private User user;
 
 
     @Override
