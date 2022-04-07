@@ -9,6 +9,7 @@ public class User
     private List<User>userlist=new ArrayList<>();
     private int user_id;
     private String username;
+    private int balance;
     private String password;
     private String role;
     private String email;
