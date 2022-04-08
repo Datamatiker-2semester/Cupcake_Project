@@ -16,29 +16,25 @@
   <jsp:body>
 
     <table>
+
       <tr>
         <th>Kunderbrugernavn:</th>
         <th>Købshistorik:</th>
         <th>Rediger Profil:</th>
-      </tr>
+      </tr></thead>
+      <c:forEach items="${sessionScope.userList}" var="userList">
 
       <tr>
+        <td>${userList.username}</td>
+        <td>${userList.email}</td>
 
-        <td>${sessionScope.user.username}</td>
-        <td>test</td>
-        <td>test</td>
 
 
 
       </tr>
 
+      </c:forEach>
 
-
-      <tr>
-        <td>Centro comercial Moctezuma</td>
-        <td>Francisco Chang</td>
-        <td>Mexico</td>
-      </tr>
     </table>
 
 

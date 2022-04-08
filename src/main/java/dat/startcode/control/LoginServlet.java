@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -47,9 +48,11 @@ public class LoginServlet extends HttpServlet
 
         try
         {
+            ArrayList<User> userList = userMapper.getUser();
             user = userMapper.login(username, password);
             session = request.getSession();
             session.setAttribute("user", user); // adding user object to session scope
+            session.setAttribute("userList",userList);
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
         catch (DatabaseException e)

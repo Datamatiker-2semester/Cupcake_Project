@@ -6,6 +6,7 @@ import dat.startcode.model.entities.Cupcake;
 import dat.startcode.model.exceptions.DatabaseException;
 import dat.startcode.model.persistence.ConnectionPool;
 import dat.startcode.model.persistence.CupcakeMapper;
+import dat.startcode.model.persistence.UserMapper;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,6 +31,13 @@ public class Main {
         List<Bottom> bottomList = cupcakeMapper.getBottom();
         for (Bottom bottom: bottomList) {
             System.out.println(bottom);
+        }
+
+        UserMapper userMapper = new UserMapper(connectionPool);
+        List<User> users = userMapper.getUser();
+        for (User user : users) {
+            System.out.println(user);
+
         }
     }
 }

@@ -90,6 +90,33 @@ public class UserMapper implements IUserMapper
         }
         return user;
     }
+    @Override
+    public ArrayList<User> getUser() throws DatabaseException {
+        ArrayList<User> userList = new ArrayList<>();
+        Logger.getLogger("web").log(Level.INFO,"");
+
+        User user;
+        String sql = "SELECT * FROM user";
+
+        try(Connection connection = connectionPool.getConnection()){
+            try(PreparedStatement ps = connection.prepareStatement(sql)){
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    int userID = rs.getInt("user_id");
+                    String username = rs.getString("username");
+                    String password = rs.getString("password");
+                    String email = rs.getString("email");
+                    String role = rs.getString("role");
+                    int balance = rs.getInt("balance");
+                    userList.add(user = new User(username,password,email,role,balance));
+                }
+            }
+
+        } catch (SQLException ex){
+            throw new DatabaseException(ex,"User could not be found");
+        }
+        return userList;
+    }
 
 
 }
