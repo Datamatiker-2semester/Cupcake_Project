@@ -46,8 +46,8 @@
 </form>
     <br>
 <h6>Submit order</h6>
-    <button class="GFG"
-            onclick="window.location.href = 'purchase.jsp'">
+    <button class="GFG" value="choice"
+            onclick="window.location.href = 'PurchaseServlet'">
         Click Here
     </button>
 </form>
