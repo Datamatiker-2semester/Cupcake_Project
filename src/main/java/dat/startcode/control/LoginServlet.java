@@ -45,11 +45,14 @@ public class LoginServlet extends HttpServlet
         String password = request.getParameter("password");
 
 
+        String email = request.getParameter("email");
+
         try
         {
             user = userMapper.login(username, password);
             session = request.getSession();
             session.setAttribute("user", user); // adding user object to session scope
+            session.setAttribute("user1", email);
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
         catch (DatabaseException e)

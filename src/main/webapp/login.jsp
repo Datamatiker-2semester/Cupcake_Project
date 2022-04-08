@@ -34,6 +34,13 @@
 
             <input type="submit" value="Create user">
         </form>
+        <br>
+        <h4>You can create a new user here</h4>
+        <form action="createUser.jsp">
+
+            <input type="submit" value="Create user">
+        </form>
+
 
     </jsp:body>
 </t:pagetemplate>
