@@ -42,6 +42,17 @@ public class PurchaseServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    doGet(request,response);
+        ConnectionPool connectionPool = new ConnectionPool();
+        OrderlineMapper orderlineMapper = new OrderlineMapper(connectionPool);
+
+        response.setContentType("text/html");
+        HttpSession session = request.getSession();
+        request.getAttribute("OrderCupcake.jsp");
+
+        try{
+            //orderlineMapper.createOrderline();
+        }catch (DatabaseException e){
+            e.printStackTrace();
+        }
     }
 }

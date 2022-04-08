@@ -13,5 +13,6 @@
 
         <h3>Kurv</h3>
 
+       <h4>here are your selected items ${sessionScope.listOrderline}</h4>
     </jsp:body>
 </t:pagetemplate>
