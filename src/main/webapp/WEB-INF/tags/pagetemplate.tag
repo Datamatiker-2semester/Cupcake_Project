@@ -18,7 +18,7 @@
 </head>
 <body>
 <header>
-    <img src="${pageContext.request.contextPath}/images/cupcakeheader.png" width="1900px;" class="img-fluid"/>
+    <img src="${pageContext.request.contextPath}/images/cupcakeheader.png" width="2560px;" class="img-fluid"/>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
         <div class="container-fluid">
@@ -31,8 +31,11 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
 
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/OrderCupcake.jsp">Cupcakes</a>
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Orders</a>
+                    <c:if test="${sessionScope.user.role == 'admin'}">
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/customers.jsp">Costumers</a>
+                    </c:if>
                     <c:if test="${sessionScope.user == null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
                     </c:if>
