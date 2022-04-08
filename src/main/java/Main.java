@@ -24,10 +24,12 @@ public class Main {
     public static void main( String args[]) throws SQLException, DatabaseException {
        ConnectionPool connectionPool = new ConnectionPool();
         CupcakeMapper cupcakeMapper = new CupcakeMapper(connectionPool);
+
         List<Topping> toppingList = cupcakeMapper.getToppings();
         for (Topping topping : toppingList) {
             System.out.println(topping);
         }
+
         List<Bottom> bottomList = cupcakeMapper.getBottom();
         for (Bottom bottom: bottomList) {
             System.out.println(bottom);
