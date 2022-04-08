@@ -9,7 +9,6 @@
              Køb
     </jsp:attribute>
 
-
     <jsp:body>
 
         <h3>Kurv</h3>

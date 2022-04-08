@@ -4,11 +4,13 @@ public class Cupcake {
     private Bottom bottom;
     private Topping topping;
     private int totalPrice;
+    private int cupcakeID;
 
-    public Cupcake(Bottom bottom, Topping topping, int totalPrice) {
+    public Cupcake(Bottom bottom, Topping topping, int totalPrice, int cupcakeID) {
         this.bottom = bottom;
         this.topping = topping;
         this.totalPrice = totalPrice;
+        this.cupcakeID = cupcakeID;
     }
 
     public int priceOfCupcake(Bottom bottom,Topping topping){
@@ -30,6 +32,10 @@ public class Cupcake {
 
     public void setTopping(Topping topping) {
         this.topping = topping;
+    }
+
+    public int getCupcakeID() {
+        return cupcakeID;
     }
 
     @Override

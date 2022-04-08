@@ -24,6 +24,7 @@ public class OrderServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         ConnectionPool connectionPool = new ConnectionPool();
         CupcakeMapper cupcakeMapper = new CupcakeMapper(connectionPool);
 
@@ -32,8 +33,10 @@ public class OrderServlet extends HttpServlet {
         try {
             ArrayList<Bottom> listCupcakeBottom = cupcakeMapper.getBottom();
             session.setAttribute("listCupcakeB", listCupcakeBottom);
+
             ArrayList<Topping> listCupcakeTopping = cupcakeMapper.getToppings();
             session.setAttribute("listCupcakeT",listCupcakeTopping);
+
             request.getRequestDispatcher("OrderCupcake.jsp").forward(request, response);
             request.getAttribute("index.jsp");
         } catch (DatabaseException e) {
