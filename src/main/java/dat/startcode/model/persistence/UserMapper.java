@@ -38,7 +38,8 @@ public class UserMapper implements IUserMapper
                 {
                     String role = rs.getString("role");
                     String email = rs.getString("email");
-                    user = new User(username, password,email,role);
+                    int balance = rs.getInt("balance");
+                    user = new User(username, password,email,role,balance);
                 } else
                 {
                     throw new DatabaseException("Wrong username or password");

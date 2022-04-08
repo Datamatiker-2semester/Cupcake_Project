@@ -54,8 +54,9 @@ public class CreateUserServlet extends HttpServlet {
             session.setAttribute("username",username);
             session.setAttribute("password",password);
             session.setAttribute("email",email);
-            session.setAttribute("user",user);
             session.setAttribute("role",role);
+            session.setAttribute("user",user);
+
 
 
             request.getRequestDispatcher("index.jsp").forward(request, response);
