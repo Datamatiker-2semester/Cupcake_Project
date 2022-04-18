@@ -48,6 +48,7 @@ public class LoginServlet extends HttpServlet
 
         try
         {
+
             ArrayList<User> userList = userMapper.getUser();
             user = userMapper.login(username, password);
             session = request.getSession();

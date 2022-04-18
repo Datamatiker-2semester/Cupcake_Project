@@ -1,11 +1,9 @@
 
-import dat.startcode.model.entities.Topping;
-import dat.startcode.model.entities.User;
-import dat.startcode.model.entities.Bottom;
-import dat.startcode.model.entities.Cupcake;
+import dat.startcode.model.entities.*;
 import dat.startcode.model.exceptions.DatabaseException;
 import dat.startcode.model.persistence.ConnectionPool;
 import dat.startcode.model.persistence.CupcakeMapper;
+import dat.startcode.model.persistence.OrderlineMapper;
 import dat.startcode.model.persistence.UserMapper;
 
 import java.sql.Connection;
@@ -24,6 +22,7 @@ public class Main {
     public static void main( String args[]) throws SQLException, DatabaseException {
        ConnectionPool connectionPool = new ConnectionPool();
         CupcakeMapper cupcakeMapper = new CupcakeMapper(connectionPool);
+        OrderlineMapper orderlineMapper = new OrderlineMapper(connectionPool);
 
         List<Topping> toppingList = cupcakeMapper.getToppings();
         for (Topping topping : toppingList) {
@@ -41,5 +40,12 @@ public class Main {
             System.out.println(user);
 
         }
+
+        List<Orderline> orderlineList = orderlineMapper.getOrderline();
+        for (Orderline orderline : orderlineList) {
+            System.out.println(orderline);
+
+        }
+
     }
 }

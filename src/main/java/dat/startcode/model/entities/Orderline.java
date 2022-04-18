@@ -43,4 +43,9 @@ public class Orderline {
     public int getPrice() {
         return price;
     }
+
+    @Override
+    public String toString() {
+        return "Your order ID is: "+orderID+" you have ordered: "+quantity+" amounts of cupcakes";
+    }
 }
