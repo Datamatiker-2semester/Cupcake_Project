@@ -54,7 +54,7 @@ public class CupcakeMapper {
         Logger.getLogger("web").log(Level.INFO, "");
 
         Bottom bottom;
-        String sql = "SELECT * FROM bottom";
+        String sql = "SELECT * FROM cupcake.bottom";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -79,7 +79,7 @@ public class CupcakeMapper {
         Logger.getLogger("web").log(Level.INFO, "");
 
         Topping topping;
-        String sql = "SELECT * FROM topping";
+        String sql = "SELECT * FROM cupcake.topping";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -96,6 +96,7 @@ public class CupcakeMapper {
         }
         return toppingList;
     }
+
 }
 
 

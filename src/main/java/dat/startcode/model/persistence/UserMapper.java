@@ -38,7 +38,8 @@ public class UserMapper implements IUserMapper
                 {
                     String role = rs.getString("role");
                     String email = rs.getString("email");
-                    user = new User(username, password,email,role);
+                    int balance = rs.getInt("balance");
+                    user = new User(username, password,email,role,balance);
                 } else
                 {
                     throw new DatabaseException("Wrong username or password");
@@ -75,9 +76,6 @@ public class UserMapper implements IUserMapper
                     user = new User(username, password, email,role);
 
 
-
-
-
                 } else
                 {
                     throw new DatabaseException("The user with username = " + username + " could not be inserted into the database");
@@ -89,6 +87,33 @@ public class UserMapper implements IUserMapper
             throw new DatabaseException(ex, "Could not insert username into database");
         }
         return user;
+    }
+    @Override
+    public ArrayList<User> getUser() throws DatabaseException {
+        ArrayList<User> userList = new ArrayList<>();
+        Logger.getLogger("web").log(Level.INFO,"");
+
+        User user;
+        String sql = "SELECT * FROM user";
+
+        try(Connection connection = connectionPool.getConnection()){
+            try(PreparedStatement ps = connection.prepareStatement(sql)){
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    int userID = rs.getInt("user_id");
+                    String username = rs.getString("username");
+                    String password = rs.getString("password");
+                    String email = rs.getString("email");
+                    String role = rs.getString("role");
+                    int balance = rs.getInt("balance");
+                    userList.add(user = new User(username,password,email,role,balance));
+                }
+            }
+
+        } catch (SQLException ex){
+            throw new DatabaseException(ex,"User could not be found");
+        }
+        return userList;
     }
 
 

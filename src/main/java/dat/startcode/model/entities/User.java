@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class User
 {
-    private List<User>userlist=new ArrayList<>();
+
     private int user_id;
     private String username;
     private int balance;
@@ -15,7 +15,7 @@ public class User
     private String email;
 
 
-    public User(String username, String password, String role, String email, int balance) {
+    public User(String username, String password, String email, String role, int balance) {
         this.username = username;
         this.password = password;
         this.role = role;

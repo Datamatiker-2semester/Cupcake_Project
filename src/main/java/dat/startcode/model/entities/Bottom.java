@@ -3,10 +3,12 @@ package dat.startcode.model.entities;
 public class Bottom {
     private int bottomPrice;
     private String bottomName;
+    private int id;
 
-    public Bottom(int bottom_id, String bottomName, int price) {
+    public Bottom(int id, String bottomName, int price) {
         this.bottomPrice = price;
         this.bottomName = bottomName;
+        this.id = id;
     }
 
     public int getBottomPrice() {

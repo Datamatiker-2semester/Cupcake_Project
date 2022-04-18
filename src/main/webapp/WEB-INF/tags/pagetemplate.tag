@@ -46,6 +46,9 @@
                     <c:if test="${sessionScope.user != null}">
                         <a class="nav-item nav-link">${sessionScope.user.email}</a>
                     </c:if>
+                    <c:if test="${sessionScope.user != null}">
+                        <a class="nav-item nav-link">Balance: ${sessionScope.user.balance}</a>
+                    </c:if>
 
 
 
