@@ -49,10 +49,10 @@ public class PurchaseServlet extends HttpServlet {
         HttpSession session = request.getSession();
         request.getAttribute("OrderCupcake.jsp");
 
-        try{
+        /*try{
             //orderlineMapper.createOrderline();
         }catch (DatabaseException e){
             e.printStackTrace();
-        }
+        }*/
     }
 }
