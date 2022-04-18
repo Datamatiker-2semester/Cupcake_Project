@@ -13,17 +13,20 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class OrderlineMapper {
+
     ConnectionPool connectionPool;
 
     public OrderlineMapper(ConnectionPool connectionPool) {
+
         this.connectionPool = connectionPool;
     }
 
     public Orderline createOrderline(int order_id, int quantity, int price, int topping_id, int bottom_id) throws DatabaseException {
+
         Logger.getLogger("web").log(Level.INFO, "");
         Orderline orderline;
+        String sql = "insert into orderline (order_id, quantity, price, topping_id, bottom_id) values (?,?,?,?,?)";
 
-        String sql = "insert into orderlines (order_id, quantity, price, topping_id, bottom_id) values (?,?,?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, order_id);
@@ -43,6 +46,7 @@ public class OrderlineMapper {
         }
         return orderline;
     }
+
     public ArrayList<Orderline> getOrderline() throws DatabaseException {
 
         ArrayList<Orderline> orderlineList = new ArrayList<>();

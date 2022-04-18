@@ -35,7 +35,7 @@ public class OrderServlet extends HttpServlet {
             session.setAttribute("listCupcakeB", listCupcakeBottom);
 
             ArrayList<Topping> listCupcakeTopping = cupcakeMapper.getToppings();
-            session.setAttribute("listCupcakeT",listCupcakeTopping);
+            session.setAttribute("listCupcakeT", listCupcakeTopping);
 
             request.getRequestDispatcher("OrderCupcake.jsp").forward(request, response);
             request.getAttribute("index.jsp");
@@ -47,7 +47,7 @@ public class OrderServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    doGet(request,response);
+        doGet(request, response);
 
     }
 }

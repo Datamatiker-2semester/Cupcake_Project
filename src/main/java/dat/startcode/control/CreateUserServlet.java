@@ -47,14 +47,16 @@ public class CreateUserServlet extends HttpServlet {
         String password = request.getParameter("password");
         String email = request.getParameter("email");
         String role = request.getParameter("role");
+        int balance = Integer.parseInt(request.getParameter("balance"));
 
         try {
-            user = userMapper.createUser(username,password,email,role);
+            user = userMapper.createUser(username,password,email,role,balance);
             session = request.getSession();
             session.setAttribute("username",username);
             session.setAttribute("password",password);
             session.setAttribute("email",email);
             session.setAttribute("role",role);
+            session.setAttribute("balance",balance);
             session.setAttribute("user",user);
 
 

@@ -17,7 +17,7 @@
     <div>Welcome ${user.username}! What would you like?</div>
     <br>
 <form>
-    <label> Choose topping </label>
+    <label> Choose topping: </label>
     <select>
         <c:forEach items="${sessionScope.listCupcakeT}" var="topping">
 
@@ -28,10 +28,13 @@
             </option>
         </c:forEach>
     </select>
+
 </form>
 
+    <br>
+
 <form>
-    <label> Choose flavor </label>
+    <label> Choose flavor: </label>
     <select>
         <c:forEach items="${sessionScope.listCupcakeB}" var="bottom">
 
@@ -46,10 +49,10 @@
 </form>
     <br>
 <h6>Submit order</h6>
-    <button class="GFG" value="choice"
-            onclick="window.location.href = 'PurchaseServlet'">
-        Click Here
-    </button>
+    <form action="PurchaseServlet" method="get">
+
+        <input type="submit" value="Click here">
+    </form>
 </form>
 
 

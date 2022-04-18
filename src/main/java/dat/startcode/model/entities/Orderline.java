@@ -1,5 +1,7 @@
 package dat.startcode.model.entities;
 
+import java.util.Date;
+
 public class Orderline {
 
     int orderLineId;
@@ -8,6 +10,7 @@ public class Orderline {
     int toppingId;
     int bottomId;
     int price;
+    
 
     public Orderline(int orderID, int quantity, int toppingId, int bottomId, int price) {
         this.orderID = orderID;
