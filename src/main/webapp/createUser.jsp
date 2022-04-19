@@ -6,7 +6,7 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-             Create user:
+
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -15,8 +15,10 @@
 
     <jsp:body>
 
-        <h3>Please fill out the information below:</h3>
 
+
+        <h3>Please fill out the information below to create an account:</h3>
+        <br>
         <form action="CreateUserServlet" method="post">
             <label for="username">Username: </label>
             <input type="text" id="username" name="username"/>

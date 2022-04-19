@@ -18,7 +18,7 @@
 </head>
 <body>
 <header>
-    <img src="${pageContext.request.contextPath}/images/cupcakeheader.png" width="2560px;" class="img-fluid"/>
+    <img src="${pageContext.request.contextPath}/images/cupcakeheader.png"/>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
         <div class="container-fluid">
@@ -60,12 +60,19 @@
 
 </header>
 
-<div id="body" class="container mt-4" style="min-height: 400px;">
+<div id="body" class="container mt-4" style="min-height: 700px;">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <h1><jsp:invoke fragment="header"/></h1>
     <jsp:doBody/>
 </div>
 
 <!-- Footer -->
+
 
 
 <div class="container mt-3">
