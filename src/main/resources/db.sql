@@ -118,3 +118,19 @@ CREATE TABLE IF NOT EXISTS `cupcake`.`orderline` (
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+INSERT INTO `cupcake`.`topping` (`topping_name`, `topping_price`) VALUES ('Chocolate', '5');
+INSERT INTO `cupcake`.`topping` (`topping_name`, `topping_price`) VALUES ('Blueberry', '5');
+INSERT INTO `cupcake`.`topping` (`topping_name`, `topping_price`) VALUES ('Rasberry', '5');
+INSERT INTO `cupcake`.`topping` (`topping_name`, `topping_price`) VALUES ('Crispy', '6');
+INSERT INTO `cupcake`.`topping` (`topping_name`, `topping_price`) VALUES ('Strawberry', '6');
+INSERT INTO `cupcake`.`topping` (`topping_name`, `topping_price`) VALUES ('Rum/Raisin', '7');
+INSERT INTO `cupcake`.`topping` (`topping_name`, `topping_price`) VALUES ('Orange', '8');
+INSERT INTO `cupcake`.`topping` (`topping_name`, `topping_price`) VALUES ('Lemon', '8');
+INSERT INTO `cupcake`.`topping` (`topping_name`, `topping_price`) VALUES ('Blue cheese', '9');
+
+INSERT INTO `cupcake`.`bottom` (`bottom_name`, `bottom_price`) VALUES ('Chocolate', '5');
+INSERT INTO `cupcake`.`bottom` (`bottom_name`, `bottom_price`) VALUES ('Vanilla', '5');
+INSERT INTO `cupcake`.`bottom` (`bottom_name`, `bottom_price`) VALUES ('Nutmeg', '5');
+INSERT INTO `cupcake`.`bottom` (`bottom_name`, `bottom_price`) VALUES ('Pistacio', '6');
+INSERT INTO `cupcake`.`bottom` (`bottom_name`, `bottom_price`) VALUES ('Almond', '7');

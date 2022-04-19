@@ -32,7 +32,7 @@ public class PurchaseServlet extends HttpServlet {
         session.setAttribute("orderline", null); // adding empty user object to session scope
         OrderlineMapper orderlineMapper = new OrderlineMapper(connectionPool);
         Orderline orderline = null;
-        int order_id = Integer.parseInt(request.getParameter("order_id"));
+        String order_id = Integer.parseInt(request.getParameter("order_id"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         int topping_id = Integer.parseInt(request.getParameter("topping_id"));
         int bottom_id = Integer.parseInt(request.getParameter("bottom_id"));
