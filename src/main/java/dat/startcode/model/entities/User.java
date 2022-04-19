@@ -29,6 +29,12 @@ public class User
         this.role = role;
     }
 
+    public User(String username, String password, String email, String role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.email = email;
+    }
 
     @Override
     public String toString() {

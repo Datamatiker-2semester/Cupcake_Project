@@ -8,6 +8,6 @@ import java.util.ArrayList;
 public interface IUserMapper
 {
     public User login(String username, String password) throws DatabaseException;
-    public User createUser(String username, String password,String email,String role, int balance) throws DatabaseException;
+    public User createUser(String username, String password,String email,String role) throws DatabaseException;
     public ArrayList<User> getUser() throws DatabaseException;
 }
