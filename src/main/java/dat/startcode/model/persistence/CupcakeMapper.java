@@ -1,5 +1,6 @@
 package dat.startcode.model.persistence;
 
+import dat.startcode.model.entities.Cupcake;
 import dat.startcode.model.entities.Topping;
 import dat.startcode.model.entities.User;
 import dat.startcode.model.entities.Bottom;
@@ -69,7 +70,6 @@ public class CupcakeMapper {
         }
         return toppingList;
     }
-
 }
 
 

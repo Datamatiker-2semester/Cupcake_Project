@@ -15,29 +15,32 @@ import java.util.logging.Logger;
 public class OrderlineMapper {
 
     ConnectionPool connectionPool;
+    CupcakeMapper cupcakeMapper;
 
     public OrderlineMapper(ConnectionPool connectionPool) {
 
         this.connectionPool = connectionPool;
     }
 
-    public Orderline createOrderline(int order_id, int quantity, int price, int topping_id, int bottom_id) throws DatabaseException {
+
+    public Orderline createOrderline( int topping_id, int bottom_id, int cupcake_price) throws DatabaseException {
 
         Logger.getLogger("web").log(Level.INFO, "");
         Orderline orderline;
-        String sql = "insert into orderline (order_id, quantity, price, topping_id, bottom_id) values (?,?,?,?,?)";
+        String sql = "insert into orderline (topping_id, bottom_id, cupcake_price) values (?,?,?)";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, order_id);
-                ps.setInt(2, quantity);
-                ps.setInt(3, price);
-                ps.setInt(4,topping_id);
-                ps.setInt(5,bottom_id);
+                ps.setInt(1, topping_id);
+                ps.setInt(2, bottom_id);
+                ps.setInt(3,cupcake_price);
                 int rowsAffected = ps.executeUpdate();
+
+
                 if (rowsAffected == 1) {
-                    orderline = new Orderline(order_id,quantity,price,topping_id,bottom_id);
+                    orderline = new Orderline(topping_id,bottom_id,cupcake_price);
                 } else {
+
                     throw new DatabaseException("The cupcake couldn't be inserted into the database");
                 }
             }
@@ -59,12 +62,10 @@ public class OrderlineMapper {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-                    int orderId = rs.getInt("order_id");
-                    int quantity = rs.getInt("quantity");
-                    int price = rs.getInt("price");
-                    int toppingId = rs.getInt("topping_id");
-                    int bottomId = rs.getInt("bottom_id");
-                    orderlineList.add(orderline = new Orderline(orderId,quantity,price,toppingId,bottomId));
+                    int topping_id = rs.getInt("topping_id");
+                    int bottom_id = rs.getInt("bottom_id");
+                    int cupcake_price = rs.getInt("cupcake_price");
+                    orderlineList.add(orderline = new Orderline(topping_id,bottom_id,cupcake_price ));
                 }
             }
         } catch (

@@ -1,51 +1,26 @@
 package dat.startcode.model.entities;
 
+import dat.startcode.model.exceptions.DatabaseException;
+import dat.startcode.model.persistence.CupcakeMapper;
+
 import java.util.Date;
 
 public class Orderline {
 
-    int orderLineId;
-    int orderID;
-    int quantity;
-    int toppingId;
-    int bottomId;
-    int price;
-    
+    private int order_id = 1;
+    private int topping_id;
+    private int bottom_id;
+    private int cupcake_price;
 
-    public Orderline(int orderID, int quantity, int toppingId, int bottomId, int price) {
-        this.orderID = orderID;
-        this.quantity = quantity;
-        this.toppingId = toppingId;
-        this.bottomId = bottomId;
-        this.price = price;
-    }
-
-    public int getOderLineId() {
-        return orderLineId;
-    }
-
-    public int getOderID() {
-        return orderID;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public int getToppingId() {
-        return toppingId;
-    }
-
-    public int getBottomId() {
-        return bottomId;
-    }
-
-    public int getPrice() {
-        return price;
+    public Orderline(int topping_id, int bottom_id, int cupcake_price) {
+        this.order_id++;
+        this.topping_id = topping_id;
+        this.bottom_id = bottom_id;
+        this.cupcake_price = cupcake_price;
     }
 
     @Override
     public String toString() {
-        return "Your order ID is: "+orderID+" you have ordered: "+quantity+" amounts of cupcakes";
+        return "Your order ID is: "+order_id+" you have ordered: ";
     }
 }

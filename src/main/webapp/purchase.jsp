@@ -6,13 +6,22 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-             Køb
+             Basket:
     </jsp:attribute>
 
     <jsp:body>
 
-        <h3>Kurv</h3>
 
-       <h4>here are your selected items ${sessionScope.listOrderline}</h4>
+
+       <h4>Here are the cupcakes you picked:  ${sessionScope.listOrderline} ${sessionScope.bottom_id} </h4>
+
+        <br>
+
+
+        <p>Click here to pay with your balance</p>
+        <form action="reciept.jsp">
+
+            <input type="submit" value="Pay">
+        </form>
     </jsp:body>
 </t:pagetemplate>

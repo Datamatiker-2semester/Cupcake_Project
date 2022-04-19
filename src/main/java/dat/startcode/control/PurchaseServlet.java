@@ -32,34 +32,19 @@ public class PurchaseServlet extends HttpServlet {
         session.setAttribute("orderline", null); // adding empty user object to session scope
         OrderlineMapper orderlineMapper = new OrderlineMapper(connectionPool);
         Orderline orderline = null;
-        String order_id = Integer.parseInt(request.getParameter("order_id"));
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
-        int topping_id = Integer.parseInt(request.getParameter("topping_id"));
-        int bottom_id = Integer.parseInt(request.getParameter("bottom_id"));
-        int price = Integer.parseInt(request.getParameter("price"));
+
+
+
+
 
 
         request.getAttribute("OrderCupcake.jsp");
 
-        try {
-
-            orderline = orderlineMapper.createOrderline(order_id,quantity,topping_id,bottom_id,price);
-            session.setAttribute("order_id",order_id);
-            session.setAttribute("quantity",quantity);
-            session.setAttribute("topping_id",topping_id);
-            session.setAttribute("bottom_id",bottom_id);
-            session.setAttribute("price",price);
 
 
 
+        request.getRequestDispatcher("purchase.jsp").forward(request, response);
 
-            request.getRequestDispatcher("purchase.jsp").forward(request, response);
-
-
-
-            } catch(DatabaseException e){
-                e.printStackTrace();
-            }
 
     }
 
@@ -72,10 +57,6 @@ public class PurchaseServlet extends HttpServlet {
         HttpSession session = request.getSession();
         request.getAttribute("OrderCupcake.jsp");
 
-        /*try{
-            //orderlineMapper.createOrderline();
-        }catch (DatabaseException e){
-            e.printStackTrace();
-        }*/
+        //orderlineMapper.createOrderline();
     }
 }

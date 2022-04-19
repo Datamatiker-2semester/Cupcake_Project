@@ -29,7 +29,7 @@
             <input type="submit"  value="Log in"/>
         </form>
             <br>
-        <h4>You can create a new user here</h4>
+        <h4>Click here if you don't have an account</h4>
         <form action="createUser.jsp">
 
             <input type="submit" value="Create user">

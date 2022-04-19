@@ -6,11 +6,11 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-             Kunder:
+             Customers:
     </jsp:attribute>
 
   <jsp:attribute name="footer">
-            Kunder:
+            Customer page
     </jsp:attribute>
 
   <jsp:body>
@@ -18,15 +18,16 @@
     <table>
 
       <tr>
-        <th>Kunderbrugernavn:</th>
-        <th>Købshistorik:</th>
-        <th>Rediger Profil:</th>
+        <th>Customer's username:</th>
+        <th>Customer's email:</th>
+        <th>Customer's balance:</th>
       </tr></thead>
       <c:forEach items="${sessionScope.userList}" var="userList">
 
       <tr>
         <td>${userList.username}</td>
         <td>${userList.email}</td>
+        <td>${userList.balance}</td>
 
 
 

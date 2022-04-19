@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class User
-{
+public class User {
 
     private int user_id;
     private String username;
@@ -14,26 +13,20 @@ public class User
     private String role;
     private String email;
 
-
-    public User(String username, String password, String email, String role, int balance) {
+    public User (String username, String password, String email, String role, int balance) {
         this.username = username;
-        this.password = password;
-        this.role = role;
-        this.email = email;
         this.balance = balance;
-    }
-
-    public User(String username, String password, String role) {
-        this.username = username;
-        this.password = password;
-        this.role = role;
-    }
-
-    public User(String username, String password, String email, String role) {
-        this.username = username;
         this.password = password;
         this.role = role;
         this.email = email;
+    }
+
+    public User(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.role = "customer";
+        this.balance=500;
     }
 
     @Override

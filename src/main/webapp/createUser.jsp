@@ -15,7 +15,7 @@
 
     <jsp:body>
 
-        <h3>You can create a user here:</h3>
+        <h3>Please fill out the information below:</h3>
 
         <form action="CreateUserServlet" method="post">
             <label for="username">Username: </label>
