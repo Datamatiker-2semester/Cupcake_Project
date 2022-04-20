@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `cupcake`.`bottom` (
                                                   `bottom_price` INT NOT NULL,
                                                   PRIMARY KEY (`bottom_id`))
     ENGINE = InnoDB
-    AUTO_INCREMENT = 6
+    AUTO_INCREMENT = 11
     DEFAULT CHARACTER SET = utf8mb3;
 
 
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `cupcake`.`user` (
                                                 `balance` INT NOT NULL DEFAULT '500',
                                                 PRIMARY KEY (`user_id`))
     ENGINE = InnoDB
-    AUTO_INCREMENT = 20
+    AUTO_INCREMENT = 24
     DEFAULT CHARACTER SET = utf8mb3;
 
 
@@ -59,15 +59,13 @@ DROP TABLE IF EXISTS `cupcake`.`order` ;
 CREATE TABLE IF NOT EXISTS `cupcake`.`order` (
                                                  `order_id` INT NOT NULL AUTO_INCREMENT,
                                                  `user_id` INT NOT NULL,
-                                                 `order_date` DATE NOT NULL,
-                                                 `status` VARCHAR(45) NOT NULL,
-                                                 `order_amount` INT NOT NULL,
                                                  PRIMARY KEY (`order_id`),
                                                  INDEX `fk_orders_User1_idx` (`user_id` ASC) VISIBLE,
                                                  CONSTRAINT `fk_orders_User1`
                                                      FOREIGN KEY (`user_id`)
                                                          REFERENCES `cupcake`.`user` (`user_id`))
     ENGINE = InnoDB
+    AUTO_INCREMENT = 2
     DEFAULT CHARACTER SET = utf8mb3;
 
 
@@ -82,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `cupcake`.`topping` (
                                                    `topping_price` INT NOT NULL,
                                                    PRIMARY KEY (`topping_id`))
     ENGINE = InnoDB
-    AUTO_INCREMENT = 10
+    AUTO_INCREMENT = 19
     DEFAULT CHARACTER SET = utf8mb3;
 
 
@@ -92,33 +90,30 @@ CREATE TABLE IF NOT EXISTS `cupcake`.`topping` (
 DROP TABLE IF EXISTS `cupcake`.`orderline` ;
 
 CREATE TABLE IF NOT EXISTS `cupcake`.`orderline` (
-                                                     `orderline_id` INT NOT NULL AUTO_INCREMENT,
-                                                     `order_id` INT NOT NULL,
-                                                     `quantity` INT NOT NULL,
+                                                     `order_id` INT NOT NULL AUTO_INCREMENT,
                                                      `topping_id` INT NOT NULL,
                                                      `bottom_id` INT NOT NULL,
-                                                     `price` INT NOT NULL,
-                                                     PRIMARY KEY (`orderline_id`),
-                                                     INDEX `fk_orderlines_topping_idx` (`topping_id` ASC) VISIBLE,
-                                                     INDEX `fk_orderlines_bottom1_idx` (`bottom_id` ASC) VISIBLE,
-                                                     INDEX `fk_orderlines_orders1_idx` (`order_id` ASC) VISIBLE,
-                                                     CONSTRAINT `fk_orderlines_bottom1`
+                                                     `cupcake_price` INT NOT NULL,
+                                                     PRIMARY KEY (`order_id`),
+                                                     INDEX `fk_orderline_topping1_idx` (`topping_id` ASC) VISIBLE,
+                                                     INDEX `fk_orderline_bottom1_idx` (`bottom_id` ASC) VISIBLE,
+                                                     CONSTRAINT `fk_orderline_bottom1`
                                                          FOREIGN KEY (`bottom_id`)
                                                              REFERENCES `cupcake`.`bottom` (`bottom_id`),
-                                                     CONSTRAINT `fk_orderlines_orders1`
+                                                     CONSTRAINT `fk_orderline_order1`
                                                          FOREIGN KEY (`order_id`)
                                                              REFERENCES `cupcake`.`order` (`order_id`),
-                                                     CONSTRAINT `fk_orderlines_topping`
+                                                     CONSTRAINT `fk_orderline_topping1`
                                                          FOREIGN KEY (`topping_id`)
                                                              REFERENCES `cupcake`.`topping` (`topping_id`))
     ENGINE = InnoDB
+    AUTO_INCREMENT = 2
     DEFAULT CHARACTER SET = utf8mb3;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
 INSERT INTO `cupcake`.`topping` (`topping_name`, `topping_price`) VALUES ('Chocolate', '5');
 INSERT INTO `cupcake`.`topping` (`topping_name`, `topping_price`) VALUES ('Blueberry', '5');
 INSERT INTO `cupcake`.`topping` (`topping_name`, `topping_price`) VALUES ('Rasberry', '5');

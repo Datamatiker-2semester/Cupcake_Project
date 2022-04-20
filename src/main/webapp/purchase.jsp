@@ -13,7 +13,7 @@
 
 
 
-       <h4>Here are the cupcakes you picked:  ${sessionScope.listOrderline} ${sessionScope.bottom_id} </h4>
+       <h4>Here are the cupcakes you picked:  ${sessionScope.listOrderline} ${sessionScope.bottom_id}</h4>
 
         <br>
 
