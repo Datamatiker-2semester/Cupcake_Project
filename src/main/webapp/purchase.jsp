@@ -13,7 +13,9 @@
 
 
 
-       <h4>Here are the cupcakes you picked:  ${sessionScope.listOrderline} ${sessionScope.bottom_id}</h4>
+       <h4>Here are the cupcakes you picked: </h4>
+        <h4>${sessionScope.bottom_id}</h4>
+        <h4>${sessionScope.listCupcakeTopping}</h4>
 
         <br>
 

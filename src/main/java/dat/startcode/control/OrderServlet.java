@@ -19,10 +19,12 @@ import java.util.List;
 
 @WebServlet(name = "OrderServlet", value = "/OrderServlet")
 public class OrderServlet extends HttpServlet {
+    Bottom bottom;
 
     @Override
     public void init() throws ServletException {
         ConnectionPool connectionPool = new ConnectionPool();
+
     }
 
     @Override
@@ -36,12 +38,16 @@ public class OrderServlet extends HttpServlet {
 
 
 
+
+
         try {
             ArrayList<Bottom> listCupcakeBottom = cupcakeMapper.getBottom();
             session.setAttribute("listCupcakeB", listCupcakeBottom);
 
+
             ArrayList<Topping> listCupcakeTopping = cupcakeMapper.getToppings();
             session.setAttribute("listCupcakeT", listCupcakeTopping);
+
 
             request.getRequestDispatcher("ordercupcake.jsp").forward(request, response);
             request.getAttribute("index.jsp");

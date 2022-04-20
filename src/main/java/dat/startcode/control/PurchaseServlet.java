@@ -1,9 +1,11 @@
 package dat.startcode.control;
 
+import dat.startcode.model.entities.Bottom;
 import dat.startcode.model.entities.Orderline;
 import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
 import dat.startcode.model.persistence.ConnectionPool;
+import dat.startcode.model.persistence.CupcakeMapper;
 import dat.startcode.model.persistence.OrderlineMapper;
 import dat.startcode.model.persistence.UserMapper;
 
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 public class PurchaseServlet extends HttpServlet {
 
     ConnectionPool connectionPool = new ConnectionPool();
+    CupcakeMapper cupcakeMapper;
 
 
     @Override
@@ -29,7 +32,8 @@ public class PurchaseServlet extends HttpServlet {
 
         response.setContentType("text/html");
         HttpSession session = request.getSession();
-        session.setAttribute("orderline", null); // adding empty user object to session scope
+        request.getAttribute("OrderCupcake.jsp");
+        session.setAttribute("orderline", null);
         OrderlineMapper orderlineMapper = new OrderlineMapper(connectionPool);
         Orderline orderline = null;
 
@@ -38,7 +42,11 @@ public class PurchaseServlet extends HttpServlet {
 
 
 
-        request.getAttribute("OrderCupcake.jsp");
+
+
+
+
+
 
 
 
