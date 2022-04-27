@@ -18,22 +18,32 @@ public class UserMapper implements IUserMapper {
 
     @Override
     public User login(String username, String password) throws DatabaseException {
+
         Logger.getLogger("web").log(Level.INFO, "");
 
         User user = null;
+        int userId;
+        String role;
+        int balance;
+        String email;
+
 
         String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
+
                 ps.setString(1, username);
                 ps.setString(2, password);
                 ResultSet rs = ps.executeQuery();
+
                 if (rs.next()) {
-                    String email = rs.getString("email");
-                    String role = rs.getString("role");
-                    int balance = rs.getInt("balance");
-                    user = new User (username, password, email,role,balance);
+                    userId = rs.getInt("user_id");
+                    email = rs.getString("email");
+                    role = rs.getString("role");
+                    balance = rs.getInt("balance");
+                    user = new User (userId,username,password,email,role,balance);
                 } else {
                     throw new DatabaseException("Wrong username or password");
                 }
@@ -49,17 +59,20 @@ public class UserMapper implements IUserMapper {
         Logger.getLogger("web").log(Level.INFO, "");
         User user;
         String sql = "insert into user (username,password,email) values (?,?,?)";
+
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
                 ps.setString(1, username);
                 ps.setString(2, password);
                 ps.setString(3, email);
 
+                int maxUsers = ps.getMaxRows();
 
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
 
-                    user = new User(username, password, email);
+                    user = new User(maxUsers,username,password,email);
 
 
                 } else {
@@ -82,15 +95,17 @@ public class UserMapper implements IUserMapper {
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
                 ResultSet rs = ps.executeQuery();
+
                 while (rs.next()) {
-                    int userID = rs.getInt("user_id");
+                    int userId = rs.getInt("user_id");
                     String username = rs.getString("username");
                     String password = rs.getString("password");
                     String email = rs.getString("email");
                     String role = rs.getString("role");
                     int balance = rs.getInt("balance");
-                    userList.add(user = new User(username, password,email));
+                    userList.add( new User(userId,username,password,email,role,balance));
                 }
             }
 

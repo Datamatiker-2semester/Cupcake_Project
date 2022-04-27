@@ -31,8 +31,7 @@ public class CreateUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        doPost(request, response);
-        response.sendRedirect("index.jsp");
+
     }
 
     @Override
@@ -41,15 +40,15 @@ public class CreateUserServlet extends HttpServlet {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         session.setAttribute("user", null); // adding empty user object to session scope
-        UserMapper userMapper = new UserMapper(connectionPool);
-        User user = null;
+
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
 
-
+        UserMapper userMapper = new UserMapper(connectionPool);
         try {
-            user = userMapper.createUser(username,password,email);
+            userMapper.createUser(username,password,email);
             session = request.getSession();
             session.setAttribute("username",username);
             session.setAttribute("password",password);
@@ -60,7 +59,7 @@ public class CreateUserServlet extends HttpServlet {
 
 
 
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
         catch (DatabaseException e)
         {

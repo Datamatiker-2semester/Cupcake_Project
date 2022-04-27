@@ -1,45 +1,50 @@
 package dat.startcode.model.entities;
 
+import dat.startcode.model.persistence.CupcakeMapper;
+import dat.startcode.model.persistence.ConnectionPool;
+
+
 public class Cupcake {
-    private Bottom bottom;
-    private Topping topping;
-    private int totalPrice;
-    private int cupcakeID;
 
-    public Cupcake(Bottom bottom, Topping topping, int totalPrice, int cupcakeID) {
-        this.bottom = bottom;
-        this.topping = topping;
-        this.totalPrice = totalPrice;
-        this.cupcakeID = cupcakeID;
+    int bottomId;
+    int toppingId;
+    int amount;
+
+    String bottom;
+    String topping;
+    int price;
+
+    public Cupcake(int bottomId, int toppingId, String bottomName, int bottomPrice, String toppingName,int toppingPrice, int amount) {
+        this.bottomId=bottomId;
+        this.toppingId=toppingId;
+        this.bottom = bottomName;
+        this.topping = toppingName;
+        this.amount = amount;
+        this.price = (bottomPrice+toppingPrice)*amount;
     }
 
-    public int priceOfCupcake(Bottom bottom,Topping topping){
-        totalPrice= bottom.getBottomPrice()+topping.getToppingPrice();
-        return totalPrice;
-    }
 
-    public Bottom getBottom() {
+    public String getBottom() {
         return bottom;
     }
 
-    public Topping getTopping() {
+    public int getBottomId() {
+        return bottomId;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public int getToppingId() {
+        return toppingId;
+    }
+
+    public String getTopping() {
         return topping;
     }
 
-    public void setBottom(Bottom bottom) {
-        this.bottom = bottom;
-    }
-
-    public void setTopping(Topping topping) {
-        this.topping = topping;
-    }
-
-    public int getCupcakeID() {
-        return cupcakeID;
-    }
-
-    @Override
-    public String toString() {
-        return "Your cupcake: \n"+"Bottom: "+bottom.getBottomName()+" Topping: "+topping.getToppingName();
+    public int getPrice() {
+        return price;
     }
 }

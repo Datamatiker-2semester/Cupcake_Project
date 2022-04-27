@@ -54,6 +54,7 @@ public class LoginServlet extends HttpServlet
             session = request.getSession();
             session.setAttribute("user", user); // adding user object to session scope
             session.setAttribute("userList",userList);
+            session.setAttribute("orderId",0);
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
         catch (DatabaseException e)

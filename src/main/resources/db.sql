@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `cupcake`.`user` (
                                                 `balance` INT NOT NULL DEFAULT '500',
                                                 PRIMARY KEY (`user_id`))
     ENGINE = InnoDB
-    AUTO_INCREMENT = 24
+    AUTO_INCREMENT = 26
     DEFAULT CHARACTER SET = utf8mb3;
 
 
@@ -90,11 +90,10 @@ CREATE TABLE IF NOT EXISTS `cupcake`.`topping` (
 DROP TABLE IF EXISTS `cupcake`.`orderline` ;
 
 CREATE TABLE IF NOT EXISTS `cupcake`.`orderline` (
-                                                     `order_id` INT NOT NULL AUTO_INCREMENT,
+                                                     `order_id` INT NOT NULL,
                                                      `topping_id` INT NOT NULL,
                                                      `bottom_id` INT NOT NULL,
                                                      `cupcake_price` INT NOT NULL,
-                                                     PRIMARY KEY (`order_id`),
                                                      INDEX `fk_orderline_topping1_idx` (`topping_id` ASC) VISIBLE,
                                                      INDEX `fk_orderline_bottom1_idx` (`bottom_id` ASC) VISIBLE,
                                                      CONSTRAINT `fk_orderline_bottom1`

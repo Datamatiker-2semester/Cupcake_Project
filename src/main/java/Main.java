@@ -22,7 +22,7 @@ public class Main {
     public static void main( String args[]) throws SQLException, DatabaseException {
        ConnectionPool connectionPool = new ConnectionPool();
         CupcakeMapper cupcakeMapper = new CupcakeMapper(connectionPool);
-        ;
+
 
         List<Topping> toppingList = cupcakeMapper.getToppings();
         for (Topping topping : toppingList) {
