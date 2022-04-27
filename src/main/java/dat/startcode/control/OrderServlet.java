@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-@WebServlet(name = "ordercupcake", value = "/ordercupcake")
+@WebServlet(name = "OrderServlet", value = "/OrderServlet")
 public class OrderServlet extends HttpServlet {
     HttpSession session;
     private ConnectionPool connectionPool;
@@ -57,13 +57,11 @@ public class OrderServlet extends HttpServlet {
         ServletContext servletContext = getServletContext();
         servletContext.setAttribute("bottoms", bottomArrayList);
         servletContext.setAttribute("topping", toppingArrayList);
-        session.setAttribute("bottoms",bottomArrayList);
-        session.setAttribute("topping",toppingArrayList);
         System.out.println(bottomArrayList);
         System.out.println(toppingArrayList);
 
 
-        request.getRequestDispatcher("src/main/webapp/purchase.jsp").forward(request, response);
+        request.getRequestDispatcher("ordercupcake.jsp").forward(request, response);
 
     }
 
@@ -79,7 +77,7 @@ public class OrderServlet extends HttpServlet {
 
         OrderMapper orderMapper = new OrderMapper(connectionPool);
         orderMapper.createOrderLine(orderId,bottom,topping,amount);
-        request.getRequestDispatcher("src/main/webapp/purchase.jsp").forward(request,response);
+        request.getRequestDispatcher("purchase.jsp").forward(request,response);
 
     }
 }

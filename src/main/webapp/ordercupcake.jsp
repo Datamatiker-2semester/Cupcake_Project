@@ -5,17 +5,17 @@
 
 <t:pagetemplate>
   <jsp:attribute name="header">
-
+            Order here
     </jsp:attribute>
 
     <jsp:attribute name="footer">
-
+        Order here
     </jsp:attribute>
     <jsp:body>
 
         <div>Welcome ${user.username}! What would you like?</div>
         <br>
-        <form action="PurchaseServlet" method="post">
+        <form method="post">
             <label for="bottom">Vælg bund</label>
             <br>
             <select name="bottom" id="bottom">
@@ -36,7 +36,9 @@
                     <option value="${loop.index}">${items.name} (${items.price},-)</option>
                 </c:forEach>
             </select>
-
+            <br>
+            <br>
+            <input id="number" type="number" name="number" value="1" max="50" min="1" >
             <br>
             <h6>Submit order</h6>
             <input type="submit" id="button" value="Click here">

@@ -31,6 +31,10 @@ public class User {
                 '}';
     }
 
+    public void updateBalance(int newBalance){
+        balance = balance-newBalance;
+    }
+
     public int getUserId() {
         return userId;
     }

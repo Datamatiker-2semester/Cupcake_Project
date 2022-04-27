@@ -11,19 +11,23 @@
 
     <jsp:body>
 
+        <form method="post">
 
+        <c:forEach items="${sessionScope.orderline}" var="item" varStatus="loop">
 
-       <h4>Here are the cupcakes you picked: </h4>
-        <h4>${sessionScope.bottom_id}</h4>
-        <h4>${sessionScope.listCupcakeTopping}</h4>
+            <div class="container"  >
+                <div class="card" style="width:400px">
+                    <div class="card-body">
+                        <h4 class="card-title">${item.bottom} <br>${item.topping} <br> </h4>
+                        <p class="card-text">${item.price} <br><br></p>
+                        <button type="submit" name="delete" value="${loop.index}">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
 
-        <br>
-
-
-        <p>Click here to pay with your balance</p>
-        <form action="reciept.jsp">
-
-            <input type="submit" value="Pay">
+        <h3>Samlet pris: ${sessionScope.totalPrice}</h3>
+        <input type="submit" name="button" id="button" value="Betal" >
         </form>
     </jsp:body>
 </t:pagetemplate>

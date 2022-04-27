@@ -114,6 +114,26 @@ public class UserMapper implements IUserMapper {
         }
         return userList;
     }
+    public void updateUser(User user){
+
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        String sql = "update `user` set `username` = ?, email = ?, balance = ? where user_id = ?;";
+
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setString(1, user.getUsername());
+                ps.setString(2, user.getEmail());
+                ps.setInt(3,user.getBalance());
+                ps.setInt(4,user.getUserId());
+                ps.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }
