@@ -22,7 +22,7 @@ public class OrderMapper {
     }
 
 
-    public int createOrder( int user_id) {
+    public int createOrder( int user_id) throws DatabaseException{
 
         Logger.getLogger("web").log(Level.INFO, "");
 
@@ -57,7 +57,7 @@ public class OrderMapper {
         return newId;
     }
 
-    public void createOrderLine(int order_id, int topping_id, int bottom_id, int amount)  {
+    public void createOrderLine(int order_id, int topping_id, int bottom_id, int amount) throws DatabaseException  {
 
         Logger.getLogger("web").log(Level.INFO, "");
 
@@ -73,7 +73,7 @@ public class OrderMapper {
                ps.setInt(4,amount);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DatabaseException("The orderline couldn't be created");
         }
     }
     public ArrayList<Cupcake> orderlineData(int orderId) {

@@ -53,7 +53,7 @@ public class PurchaseServlet extends HttpServlet {
         if(delete != null){
 
             int index = Integer.parseInt(delete);
-            ArrayList<Cupcake> cupcakes = (ArrayList<Cupcake>) session.getAttribute("orderline");
+            ArrayList<Cupcake> cupcakes = (ArrayList<Cupcake>)  session.getAttribute("orderline");
             int orderId = (int) session.getAttribute("orderId");
             OrderMapper orderMapper = new OrderMapper(connectionPool);
             orderMapper.deleteOrderline(orderId,cupcakes.get(index));

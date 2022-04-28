@@ -35,7 +35,12 @@ public class OrderServlet extends HttpServlet {
 
         if( (int) session.getAttribute("orderId") == 0){
             User user = (User) session.getAttribute("user");
-            int orderId = orderMapper.createOrder(user.getUserId());
+            int orderId = 0;
+            try {
+                orderId = orderMapper.createOrder(user.getUserId());
+            } catch (DatabaseException e) {
+                e.printStackTrace();
+            }
             session.setAttribute("orderId", orderId);
         }
 
@@ -76,7 +81,11 @@ public class OrderServlet extends HttpServlet {
         int orderId = (int) session.getAttribute("orderId");
 
         OrderMapper orderMapper = new OrderMapper(connectionPool);
-        orderMapper.createOrderLine(orderId,bottom,topping,amount);
+        try {
+            orderMapper.createOrderLine(orderId,bottom,topping,amount);
+        } catch (DatabaseException e) {
+            e.printStackTrace();
+        }
         request.getRequestDispatcher("purchase.jsp").forward(request,response);
 
     }
