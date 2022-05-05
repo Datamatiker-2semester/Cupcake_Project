@@ -1,0 +1,39 @@
+@startuml
+hide empty description
+[*] --> index.jsp
+index.jsp : Logind/logout
+index.jsp : OrderServlet
+index.jsp : Ordrer
+note left of index.jsp
+  på alle web pages
+  vil man have mulighed for at klikke rundt
+  på bla. logind/logout, bestilliing og ordrer
+end note
+
+
+index.jsp -> OrderServlet
+OrderServlet : Henter cupcake muligheder fra DB
+
+OrderServlet --> OrderCupcake.jsp
+OrderCupcake.jsp : Viser valgmuligheder for cupcake
+OrderCupcake.jsp : samt knap for videreførelse af ordrer
+index.jsp --> Ordrer
+OrderCupcake.jsp --> PurchaseServlet
+PurchaseServlet : skriver valgte toppings & bottoms over i DB
+PurchaseServlet : og generere en cupcake med en samlet pris
+PurchaseServlet --> Purchase.jsp
+Purchase.jsp : Viser valgte elementer samt giver mulighed for betaling
+
+note left of Ordrer
+Er man logget ind som admin
+vil man have mulighed for at se alles ordrer
+er man logget ind som bruger ser man kun sine egne
+end note
+Ordrer : se ordrer
+
+index.jsp --> CreateUserServlet
+CreateUserServlet: Opretter forbindelse til DB
+CreateUserServlet --> createuser.jsp
+createuser.jsp: Registreringsform
+Purchase.jsp --> [*]
+@enduml

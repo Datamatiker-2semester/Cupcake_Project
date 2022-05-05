@@ -9,10 +9,19 @@
              Køb
     </jsp:attribute>
 
+
     <jsp:body>
 
         <h3>Kurv</h3>
 
-       <h4>here are your selected items ${sessionScope.listOrderline}</h4>
+        <c:forEach var="cartItem" items="${sessionScope.cart.cartItemList}">
+            bottom: ${cartItem.bottomId}} - <br>
+            hej: ${cartItem.bottom}
+            topping: ${cartItem.toppingId}}<br/>
+
+        </c:forEach>
+
+        <a href="OrderCupcake.jsp">Bestil flere</a>
+
     </jsp:body>
 </t:pagetemplate>

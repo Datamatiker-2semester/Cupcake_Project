@@ -1,12 +1,18 @@
 package dat.startcode.model.entities;
 
 public class Bottom {
+    private int bottomId;
     private int bottomPrice;
     private String bottomName;
 
     public Bottom(int bottom_id, String bottomName, int price) {
         this.bottomPrice = price;
         this.bottomName = bottomName;
+        this.bottomId = bottom_id;
+    }
+
+    public int getBottomId() {
+        return bottomId;
     }
 
     public int getBottomPrice() {
